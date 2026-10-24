@@ -76,6 +76,16 @@
                 Console.WriteLine(item);
             }
             #endregion
+
+            #region 3.3. Filter Products 
+            ProductService filterService = new ProductService();
+            var lowStockProducts = filterService.FilterProducts(catalog, p => p.Stock < 20);
+            Console.WriteLine("\n--- Low-Stock Alert ---");
+            foreach (var item in lowStockProducts)
+            {
+                Console.WriteLine($"[LOW STOCK] {item.Name}: only {item.Stock} left!");
+            }
+            #endregion
         }
     }
 }
