@@ -18,5 +18,14 @@ namespace AdvancedCSharp02
             }
             return result;
         }
+        public void PrintReport(List<Product> products , Action <Product> printer )
+        {
+            Console.WriteLine("Product Report");
+            Console.WriteLine("--------------");
+            foreach (var item in products)
+            {
+                printer(item);
+            }
+        }
     }
-}   
+}    

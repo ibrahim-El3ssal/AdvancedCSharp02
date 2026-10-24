@@ -20,6 +20,7 @@
             };
             #endregion
 
+            #region Task 01 : Smart Product Search
             ProductService searchService = new ProductService();
             var electronics = searchService.SearchProducts(catalog, p => p.Category == "Electronics");
             Console.WriteLine("--- Electronics ___");
@@ -28,14 +29,14 @@
                 Console.WriteLine($"{item.Name} - ${item.Price} (Stock: {item.Stock})");
             }
             /// --- Under $50 --- 
-            var electronicsCheapest = searchService.SearchProducts(catalog, p => p.Price < 50 );
+            var electronicsCheapest = searchService.SearchProducts(catalog, p => p.Price < 50);
             Console.WriteLine("\n--- Under $50  ___\n");
             foreach (var item in electronicsCheapest)
             {
                 Console.WriteLine($"{item.Name} - ${item.Price} (Stock: {item.Stock})");
             }
             ///  Products that are in stock
-            var allElectronics = searchService.SearchProducts(catalog, p => p.Stock>0 );
+            var allElectronics = searchService.SearchProducts(catalog, p => p.Stock > 0);
             Console.WriteLine("\n--- Products that are in stock   ___\n");
             foreach (var item in allElectronics)
             {
@@ -48,6 +49,16 @@
             {
                 Console.WriteLine($"{item.Name} - ${item.Price} (Stock: {item.Stock})");
             }
+            #endregion
+
+            #region Task 03 : Custom Report Generator
+            ProductService print = new ProductService();
+            Console.WriteLine("\n--- --- Short Report ---___\n");
+            print.PrintReport(catalog, p => Console.WriteLine($"{p.Name} - ${p.Price}"));
+
+            Console.WriteLine("\n--- --- Detailed Report ---___\n");
+            print.PrintReport(catalog, p => Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}"));
+            #endregion
         }
     }
 }
