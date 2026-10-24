@@ -59,6 +59,23 @@
             Console.WriteLine("\n--- --- Detailed Report ---___\n");
             print.PrintReport(catalog, p => Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}"));
             #endregion
+
+            #region 3.2. Transform Products 
+            ProductService Transform = new ProductService();
+            Console.WriteLine("\n--- Summary List --- \n");
+            var summaryList = Transform.TransformProducts (catalog,p => ($"{p.Name} (${p.Price})"));
+            foreach (var item in summaryList)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("\n--- Price Labels ---");
+            var priceLabels = Transform.TransformProducts(catalog, p => $"{p.Name}: {(p.Price > 100 ? "Expensive!" : "Affordable")}");
+            foreach (var item in priceLabels)
+            {
+                Console.WriteLine(item);
+            }
+            #endregion
         }
     }
 }
