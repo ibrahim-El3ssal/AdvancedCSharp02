@@ -20,7 +20,7 @@
             };
             #endregion
 
-            #region Task 01 : Smart Product Search
+            #region Q1
             ProductService searchService = new ProductService();
             var electronics = searchService.SearchProducts(catalog, p => p.Category == "Electronics");
             Console.WriteLine("--- Electronics ___");
@@ -51,7 +51,7 @@
             }
             #endregion
 
-            #region Task 03 : Custom Report Generator
+            #region Q2
             ProductService print = new ProductService();
             Console.WriteLine("\n--- --- Short Report ---___\n");
             print.PrintReport(catalog, p => Console.WriteLine($"{p.Name} - ${p.Price}"));
@@ -60,7 +60,7 @@
             print.PrintReport(catalog, p => Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}"));
             #endregion
 
-            #region 3.2. Transform Products 
+            #region Q3
             ProductService Transform = new ProductService();
             Console.WriteLine("\n--- Summary List --- \n");
             var summaryList = Transform.TransformProducts (catalog,p => ($"{p.Name} (${p.Price})"));
@@ -77,7 +77,7 @@
             }
             #endregion
 
-            #region 3.3. Filter Products 
+            #region Q4
             ProductService filterService = new ProductService();
             var lowStockProducts = filterService.FilterProducts(catalog, p => p.Stock < 20);
             Console.WriteLine("\n--- Low-Stock Alert ---");
